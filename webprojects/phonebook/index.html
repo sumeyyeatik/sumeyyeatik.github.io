@@ -1,0 +1,125 @@
+<style type="text/css">
+
+    body {
+        
+        background-image: url("https://cdn3.iconfinder.com/data/icons/communication-mass-media-news/512/phone_marketing-512.png");
+        background-color: orange
+    }
+
+    .yellow-text {
+        color: purple
+    }
+
+    .yellow-text {
+        font-size: 35px
+    }
+    .yellow-text {
+        background-color: purple:;
+    }
+
+    li {
+        font-size: 25px;
+        font-family: helvetica,monospace;
+        color: green;
+        border: solid;
+        border-color: ;
+        border-width: 7px;
+        background-color: pink
+        padding:10px;
+        margin-bottom: 15px
+    }
+
+    button {
+        font-size: 30
+
+    }
+
+    .inputs-style {
+        color : red;
+        font-size: 25px,
+        font-family: monospace;
+    }
+
+    .label-text {
+        
+        font-weight: bold;
+        border-color: black;
+        background: pink;
+    }
+
+    }
+
+
+</style> 
+<label class="label-text"> Name </label> : <input id="name-inp" class="inputs-style" ; > </br>
+<label class="label-text"> Email </label> : <input id="mail-inp" class="inputs-style"></br>
+<button  id="add-btn">add</button> </br>
+<button id="dlt-btn">delete</button>
+Search: <input id="search-inp" class="inputs-style">
+
+<ul id="contacts-list">Contacts list</ul>
+
+<script type="text/javascript">
+    function add_contacts_to_li() {
+        //alert("it works")
+        let name = document.getElementById("name-inp").value;
+        let mail = document.getElementById("mail-inp").value;
+
+        let new_li = document.createElement("li")
+        //let delete_contact = document.createElement("button")
+
+        let input = document.createElement("input")
+        input.type = "checkbox"
+
+        //delete_contact.innerHTML = "delete"
+        new_li.innerHTML = name + " " + mail ;
+
+        
+        //new_li.appendChild(delete_contact)
+        new_li.appendChild(input)
+
+        document.getElementById("contacts-list").appendChild(new_li)
+
+        //delete_contact.onclick = delete_contacts
+
+    }
+
+    function delete_contacts() {
+        // this.parentNode.remove()
+        //let contacts = document.getElementById("contacts_list").getElementsByTagName("li")
+        let contact_list_ul = document.getElementById("contacts-list")
+        let contacts = contact_list_ul.getElementsByTagName("li")
+        for (var i =0;  i < contacts.length; i++) {
+
+         let contact_li = contacts[i]
+         let checkbox = contact_li.getElementsByTagName("input")[0]  
+         if (checkbox.checked == true) {
+        contact_li.remove()
+        }
+       }
+ 
+    }
+
+      function search_contacts() {
+
+        alert("hi")
+        
+        let search_thing = document.getElementById("search-inp").value 
+        let contacts_listitem =document.getElementsByTagName("li")
+        for (let i = 0; i < contacts_listitem.length; i++) {
+            let written_thing = contacts_listitem[i].innerHTML
+            let position = written_thing.indexOf(search_thing);
+            if (position > -1) {
+                alert(search_thing)
+            } else {
+                alert("not found")
+            }
+
+        }
+
+    }
+
+    document.getElementById("add-btn").onclick = add_contacts_to_li
+    document.getElementById("dlt-btn").onclick = delete_contacts
+    document.getElementById("search-inp").onkeydown = search_contacts
+</script>
